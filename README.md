@@ -1,4 +1,4 @@
-# ionic-yummy
+# yummy_front
 
 Ionic app 
 
@@ -7,10 +7,22 @@ Go to command line.
 Execute cmds to run the app
 
 ```
-$ git clone https://github.com/srinivastamada/ionic-restful-authentication.git
-$ cd ionic-restful-authentication
 $ npm install
 $ ionic serve
 
 ```
+
+to link with back :
+go in \src\providers
+and put the good IP in the following var :
+let apiUrl = "http://192.168.43.217:80/PHP-Slim-Yummy/api/";
+
+```
+
+test :
+login : Robert
+pass : Robert
+
+
 # yummy_front
+
