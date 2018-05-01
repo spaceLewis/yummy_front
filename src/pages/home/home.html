@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <img ion-right src="assets/imgs/yummy.png" class="navbarLogo" />
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h2>Bienvenu {{userDetails.name}}</h2>
+
+  <h3>Commande :</h3>
+
+  <ion-card *ngFor="let item of dataSetCmd; let msgIndex = index">
+    <ion-item>
+      <ion-icon name="trash" item-right (click)="cmdDelete(item.cmd_id, item.price, msgIndex)"></ion-icon>
+      <ion-card-content>
+        <p> {{item.cmd}} : {{item.price}}€ </p>
+        <img src="assets/imgs/{{item.cmd}}.jpg" class="menuSet" />
+      </ion-card-content>
+    </ion-item>
+  </ion-card>
+
+  <h3>{{nbItemCmd}} articles : {{totalPrice}} €</h3>
+  _____________________________________
+
+  <h3>Menu :</h3>
+
+  <ion-card *ngFor="let item of dataSetMenu; let msgIndex = index">
+    <ion-item>
+      <ion-icon name="add-circle"  item-right (click)="cmdUpdate2(item.name,item.price)"></ion-icon>
+      <ion-card-content>
+        <p> {{item.name}} : {{item.price}}€ </p>
+        <img src="assets/imgs/{{item.name}}.jpg" class="menuSet" />
+      </ion-card-content>
+    </ion-item>
+  </ion-card>
+
+  <ion-card *ngIf="noRecords">
+    <ion-item>
+      Fin du menu
+    </ion-item>
+  </ion-card>
+
+  <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())" *ngIf="!noRecords">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
